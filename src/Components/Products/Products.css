@@ -1,0 +1,14 @@
+.product{
+    position: relative;
+    top: 15vh;
+}
+
+.product>h1{
+    text-align: center;
+    padding: 10px;
+    color: blue;
+}
+
+.card-img-top{
+    height: 200px;
+}
