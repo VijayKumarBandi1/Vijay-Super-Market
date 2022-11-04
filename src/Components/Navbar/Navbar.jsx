@@ -25,7 +25,7 @@ function Navbar() {
                     <li><a href='/profile'>profile</a></li>
                     <li><a href='/help'>Help</a></li>
                     <li><a href='/contact'>Contact</a></li>
-                    <li><a href="">Admin Login</a> </li>
+                    <li><a href="/admin">Admin Login</a> </li>
                 </ul>
             </div>
              <div className='icon-h '>
