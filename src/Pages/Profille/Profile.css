@@ -1,0 +1,22 @@
+.ProfileMain {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 10vh;
+}
+
+
+.Profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30vw;
+    height: 60vh;
+    
+}
+
+.button{
+    width: 10rem;
+    height: 5rem;
+    font-size: large;
+}
