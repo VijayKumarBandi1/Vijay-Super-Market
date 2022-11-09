@@ -1,26 +1,11 @@
 import './App.css';
-import Home from './Pages/Home/Home';
-import Profile from './Pages/Profille/Profile';
-import{BrowserRouter,Routes,Route} from 'react-router-dom'
-import Login from './Pages/Login/Login';
-import Navbar from './Components/Navbar/Navbar';
-import Register from './Pages/Register/Register';
-import ProductsList from './Components/Products/ProductsList';
+import Router from './Router/Router';
 
 
 function App() {
   return (
     <>
-      <Navbar/>
-     <BrowserRouter>
-      <Routes>
-        <Route exact path='/' element={<Home/>}/>
-        <Route exact path='/profile' element={  <Profile/>}/>
-        <Route exact path='/Login' element={<Login/>}/>
-        <Route exact path='/Register' element={<Register/>}/>
-        <Route exact path='/admin' element={<ProductsList/>}/>
-      </Routes>
-     </BrowserRouter>
+      <Router/>
     </>
   );
 }

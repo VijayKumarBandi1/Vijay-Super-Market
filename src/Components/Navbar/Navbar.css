@@ -18,6 +18,9 @@ button{
     padding: 5px;
     z-index: 4;
     background-color: lightgray;
+    /* align-content: center; */
+ 
+   
 }
 
 .nav-left {
@@ -25,6 +28,16 @@ button{
     text-align: center;
     font-style: italic;
     font-size: larger;
+    display: flex;
+  align-items: center;
+   
+}
+.logo>img{
+    width: 50px;
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    border: 5px solid red;
 }
 
 .nav-left h1 {

@@ -1,6 +1,12 @@
 import React,{useState} from 'react'
 import './Register.css'
 import PasswordChecklist from "react-password-checklist"
+import {Link,useNavigate} from 'react-router-dom'
+import { BiUser } from "react-icons/bi"
+import { FiLock } from "react-icons/fi"
+import{MdEmail} from "react-icons/md"
+import vijay from "../../Assets/Images/vj.jpg"
+import bgimg from "../../Assets/Images/supermarket.jpg"
 
 function Register() {
     const initialValues = { fristName:"",lastName:"",email:"",  userName: "",  password: "" ,confirmPassword:"" };
@@ -8,10 +14,9 @@ function Register() {
     const [formErrors, setFormErrors] = useState({});
     const [inputFocus, setInputFocus]=useState(false)
     const [inputFocus1, setInputFocus1]=useState(false)
-    const[isUserName,setIsUsername]=useState(false)
-    const[isPassword, setIsPassword]=useState(false)
-    const[isSubmit, setIsSubmit]=useState(false)
-
+    let isUserName=false;
+    let isPassword=false;
+    const navigate=useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,7 +26,7 @@ function Register() {
       const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        setIsSubmit(true)
+        
       };
 
       const validate = (values) => {
@@ -34,7 +39,7 @@ function Register() {
           errors.userName = "Username is required!";
         }
         else{
-          setIsUsername(true)
+          isUserName=true
         }
 
         //email validation
@@ -56,9 +61,17 @@ function Register() {
             errors.confirmPassword="password  didn't match"
         }
         else{
-          setIsPassword(true)
+          isPassword=true
         }
 
+        //navigate
+        if(isUserName&&isPassword){
+          alert("Register success")
+          navigate('/home',{state:formValues})
+        }
+       else{
+        alert("Register failed")
+       }
 
         return errors;
       };
@@ -75,15 +88,20 @@ function Register() {
 
 
     return (
-        <div className="Registerpage">
-          {
-            isUserName && isPassword?<h1 className='text-success'>Register Success</h1>: isSubmit?<h1 className='text-danger'>Register failed</h1>:null
-          }
+       <div className="Registerpagecontainer">
+         <img className='bgimg' src={bgimg}/>
+         <div className="Registerpage">
+         <div className='Registerpageleft'>
+          <h1>Vijay super market</h1>
+          <small>is a delight for everyone </small>
+        </div>
           <form onSubmit={handleSubmit}>
-            <h1>Register Form</h1>
+          <div className="vijaylogo">
+          <img src={vijay} />
+          </div>
             <hr/>
             <div className="form-group">
-                <label className='form-label' >fristName</label>
+            <label className='form-label small' >FristName</label>
                 <input
                  className='form-control'
                   type="text"
@@ -93,8 +111,9 @@ function Register() {
                   onChange={handleChange}
                 />
               </div>
+              <br/>
               <div className="form-group">
-                <label className='form-label' >lastName</label>
+                <label className='form-label small' >LastName</label>
                 <input
                  className='form-control'
                   type="text"
@@ -104,8 +123,10 @@ function Register() {
                   onChange={handleChange}
                 />
               </div>
+              <br/>
               <div className="form-group">
-                <label className='form-label' >email</label>
+                <MdEmail/>
+                <label className='form-label small' >Email</label>
                 <input
                  className='form-control'
                   type="email"
@@ -118,7 +139,8 @@ function Register() {
               <p className='text-danger'>{formErrors.email}</p>
 
               <div className="form-group">
-                <label className='form-label' >Username</label>
+                <BiUser/>
+                <label className='form-label small' >Username</label>
                 <input
                  className='form-control'
                   type="text"
@@ -131,7 +153,8 @@ function Register() {
               <p className='text-danger'>{formErrors.userName}</p>
              
               <div className="form-group">
-                <label className='form-label'>Password</label>
+                <FiLock/>
+                <label className='form-label small'>Password</label>
                 <input
                   className='form-control'
                   type="password"
@@ -160,7 +183,8 @@ function Register() {
               </div>
               <p className='text-danger'>{formErrors.password}</p>
               <div className="form-group">
-                <label className='form-label'>Confirm Password</label>
+                <FiLock/>
+                <label className='form-label small'>Confirm Password</label>
                 <input
                   className='form-control'
                   type="password"
@@ -189,6 +213,8 @@ function Register() {
             
           </form>
         </div>
+       </div>
+       
       );
 }
 
