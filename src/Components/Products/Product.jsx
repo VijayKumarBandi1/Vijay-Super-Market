@@ -5,9 +5,12 @@ import Veg from '../../DummyData/Veg'
 import Groceries from '../../DummyData/Groceries'
 
 
-function Product() {
+function Product({user}) {
+
+  
     return (
         <div className='product'>
+            <h1>Welcome {user.state.userName}</h1>
             <h1>Fruits</h1>
             <div className="container">
                 <div className="row">
