@@ -7,15 +7,19 @@ import { FiLock } from "react-icons/fi"
 import{MdEmail} from "react-icons/md"
 import vijay from "../../Assets/Images/vj.jpg"
 import bgimg from "../../Assets/Images/supermarket.jpg"
+import User from '../../DummyData/User'
 
 function Register() {
-    const initialValues = { fristName:"",lastName:"",email:"",  userName: "",  password: "" ,confirmPassword:"" };
+    const initialValues = { firstName:"",lastName:"", userName:"",  password: "" ,confirmPassword:"" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [inputFocus, setInputFocus]=useState(false)
     const [inputFocus1, setInputFocus1]=useState(false)
     let isUserName=false;
     let isPassword=false;
+    let isFirstName=false;
+    let isLastName=false;
+
     const navigate=useNavigate()
 
     const handleChange = (e) => {
@@ -31,23 +35,42 @@ function Register() {
 
       const validate = (values) => {
         const errors = {};
-        const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-        const emailRegex= new RegExp("^[^\s@]+@[^\s@]+\.[^\s@]{2,}")
+        const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");//password 
+        const userNameRegex= new RegExp("^[^\s@]+@[^\s@]+\.[^\s@]{2,}")
+        const rule = /^[a-zA-Z ]{3,40}$/;
 
-        //User Name validation
-        if (!values.userName) {
-          errors.userName = "Username is required!";
+        //first name validation
+        if(!values.firstName){
+          errors.firstName="first name is required"
+        }
+        else if(!rule.test(values.firstName)){
+          errors.firstName="first name must be contain atlist 3 characters and only alphabets"
+        }
+        else{
+          isFirstName=true
+        }
+
+       // last name validation
+       if(!values.lastName){
+        errors.lastName="last name is required"
+       }
+       else if (!rule.test(values.lastName)){
+        errors.lastName="last name must be contain atlist 3 characters and only alphabets"
+       }
+       else{
+        isLastName=true
+       }
+
+
+        //userName alias email validation
+        if(!values.userName){
+            errors.userName="userName is required"
+        }
+        else if(!userNameRegex.test(values.userName)){
+            errors.userName="Invalid userName address"
         }
         else{
           isUserName=true
-        }
-
-        //email validation
-        if(!values.email){
-            errors.email="Email is required"
-        }
-        else if(!emailRegex.test(values.email)){
-            errors.email="Invalid email address"
         }
 
         //password validation
@@ -65,9 +88,10 @@ function Register() {
         }
 
         //navigate
-        if(isUserName&&isPassword){
+        if(isUserName&&isPassword&&isFirstName&&isLastName){
           alert("Register success")
-          navigate('/home',{state:formValues})
+          User.push(formValues)
+          navigate('/')
         }
        else{
         alert("Register failed")
@@ -101,16 +125,17 @@ function Register() {
           </div>
             <hr/>
             <div className="form-group">
-            <label className='form-label small' >FristName</label>
+            <label className='form-label small' >FirstName</label>
                 <input
                  className='form-control'
                   type="text"
-                  name="fristName"
-                  placeholder="fristName"
-                  value={formValues.fristName}
+                  name="firstName"
+                  placeholder="firstName"
+                  value={formValues.firstName}
                   onChange={handleChange}
                 />
               </div>
+              <p className='text-danger'>{formErrors.firstName}</p>
               <br/>
               <div className="form-group">
                 <label className='form-label small' >LastName</label>
@@ -123,29 +148,16 @@ function Register() {
                   onChange={handleChange}
                 />
               </div>
+              <p className='text-danger'>{formErrors.lastName}</p>
               <br/>
               <div className="form-group">
                 <MdEmail/>
-                <label className='form-label small' >Email</label>
-                <input
-                 className='form-control'
-                  type="email"
-                  name="email"
-                  placeholder="Username"
-                  value={formValues.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <p className='text-danger'>{formErrors.email}</p>
-
-              <div className="form-group">
-                <BiUser/>
                 <label className='form-label small' >Username</label>
                 <input
                  className='form-control'
-                  type="text"
+                  type="email"
                   name="userName"
-                  placeholder="Username"
+                  placeholder="Username must be Email Id"
                   value={formValues.userName}
                   onChange={handleChange}
                 />

@@ -14,42 +14,42 @@ const Veg=[
     {
         name:"Beetroot",
         img:Beetroot,
-        price:""
+        price:"20"
     },
     {
         name:"Brinjal",
         img:Brinjal,
-        price:""
+        price:"25"
     },
     {
         name:"Carrot",
         img:Carrot,
-        price:""
+        price:"30"
     },
     {
         name:"GreenChilli",
         img:GreenChilli,
-        price:""
+        price:"20"
     },
     {
         name:"RedChilli",
         img:RedChilli,
-        price:""
+        price:"20"
     },
     {
         name:"Onion",
         img: Onion,
-        price:""
+        price:"30"
     },
     {
         name:"Potato",
         img:Potato,
-        price:""
+        price:"15"
     },
     {
         name:"Tomato",
         img:Tomato,
-        price:""
+        price:"20"
     },
 ]
 

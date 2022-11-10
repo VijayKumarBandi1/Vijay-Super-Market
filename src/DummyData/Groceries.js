@@ -8,27 +8,27 @@ const Groceries=[
     {
         name:"RedChilliPowder",
         img:RedChilliPowder,
-        price:""
+        price:"30"
     },
     {
         name:"Salt",
         img:Salt,
-        price:""
+        price:"10"
     },
     {
         name:"Turmeric",
         img:Turmeric,
-        price:""
+        price:"10"
     },
     {
         name:"YellowSplitPeas",
         img:YellowSplitPeas,
-        price:""
+        price:"30"
     },
     {
         name:"SunflowerOil",
         img:SunflowerOil,
-        price:""
+        price:"195"
     }
     
 ]
