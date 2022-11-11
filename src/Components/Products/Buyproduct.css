@@ -1,0 +1,34 @@
+.buyproduct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 20vh;
+    flex-direction: column;
+    border: 1px solid red;
+}
+.inputfields{
+   display: flex;
+}
+.input{
+    width: 50px;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+.input:focus{
+    cursor: not-allowed;
+    overflow: hidden;
+}
+.totalprice{
+    font-style: italic;
+    color: blue;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+}
+.totalpricespan{
+    font-weight: 900;
+    text-align: center;
+}

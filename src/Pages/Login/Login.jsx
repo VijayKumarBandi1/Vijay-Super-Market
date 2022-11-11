@@ -17,6 +17,9 @@ function Login() {
   let isUserName = false;
   let isPassword = false;
 
+  useEffect(()=>{
+    console.log(User)
+  },[])
 
   const navgite = useNavigate()
 
@@ -37,12 +40,16 @@ function Login() {
 
   const validate = (values) => {
     const errors = {};
-    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-
+    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");//password
+    const userNameRegex= new RegExp("^[^\s@]+@[^\s@]+\.[^\s@]{2,}")
+    
 
     //User Name validation
     if (!values.userName) {
       errors.userName = "Username is required!";
+    }
+    else if(!userNameRegex.test(values.userName)){
+      errors.userName="invalid user name"
     }
     else {
       isUserName = true
@@ -81,14 +88,14 @@ function Login() {
 //---------------------------------------------------------------isuser-------------------------------------------------------------------------
 
   const isUser = (userValues) => {
-    const user = User.filter(u => { return (userValues.userName === u.userName && userValues.password == u.password) })
+    const user = User.find(u => { return (userValues.userName === u.userName && userValues.password == u.password) })
 
 
-    if (user.length > 0) {
+    if (user) {
 
       //navigate
       alert("login success")
-      navgite("/home", { state: formValues })
+      navgite("/home", { state: user })
       console.log(formValues)
      
     }
@@ -128,9 +135,9 @@ function Login() {
             <label className='form-label small' >Username</label>
             <input
               className='form-control'
-              type="text"
+              type="email"
               name="userName"
-              placeholder="Username"
+              placeholder="Username must be Email id"
               value={formValues.userName}
               onChange={handleChange}
             />

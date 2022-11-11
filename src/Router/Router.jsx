@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import ProductsList from '../Components/Products/ProductsList';
+import BuyProduct from '../Components/Products/BuyProduct';
 
 function Router() {
     return (
@@ -16,6 +17,7 @@ function Router() {
               <Route exact path='/home' element={<Home />} />
               <Route exact path='/profile' element={<Profile />} />
               <Route exact path='/admin' element={<ProductsList />} />
+              <Route exact path='/buy' element={<BuyProduct />} />
             </Routes>
           </BrowserRouter>
         </>

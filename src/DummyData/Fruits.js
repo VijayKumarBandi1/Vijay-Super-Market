@@ -16,37 +16,37 @@ const Fruits =[
 {
     name:"Apple",
     img:Apple,
-    price:"50$"
+    price:"15"
 },
 {
     name:"Banana",
     img:Banana,
-    price:"40"
+    price:"5"
 },
 {
     name:"GreenGrapes",
     img:GreenGrapes,
-    price:"60"
+    price:"30"
 },
 {
     name:"BlackGrapes",
     img:BlackGrapes,
-    price:"40"
+    price:"30"
 },
 {
     name:"Mango",
     img:Mango,
-    price:"80"
+    price:"15"
 },
 {
     name:"Orange",
     img:Orange,
-    price:"90"
+    price:"10"
 },
 {
     name:"Blueberry",
     img:Blueberry,
-    price:"60"
+    price:"20"
 },
 {
     name:"Papaya",
@@ -56,17 +56,17 @@ const Fruits =[
 {
     name:"Pineapple",
     img:Pineapple,
-    price:"30"
+    price:"20"
 },
 {
     name:"Pomegranate",
     img:Pomegranate,
-    price:"40"
+    price:"20"
 },
 {
     name:"Watermelon",
     img:Watermelon,
-    price:"45"
+    price:"40"
 }
 ]
 
